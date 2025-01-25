@@ -40,7 +40,7 @@ jobs:
     - name: Set up Docker
       uses: docker-practice/actions-setup-docker@v1
       with: 
-        docker-verson: '24.04.0'
+        docker-verson: latest
 
     - name: Build Docker Image
       run: docker build -f Dockerfile -t myapp:latest .
