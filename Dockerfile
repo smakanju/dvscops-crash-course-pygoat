@@ -15,12 +15,14 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Install pip and Python dependencies
-RUN python -m pip install --no-cache-dir --upgrade pip
+# Install pip
+RUN python -m pip install --no-cache-dir pip==22.0.4
+
+# Copy and install Python dependencies
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project
+# Copy project files
 COPY . /app/
 
 # Expose port
@@ -29,7 +31,7 @@ EXPOSE 8000
 # Run database migrations
 RUN python3 /app/manage.py migrate
 
-# Set work directory for application
+# Set work directory for pygoat
 WORKDIR /app/pygoat/
 
 # Start the application using Gunicorn
