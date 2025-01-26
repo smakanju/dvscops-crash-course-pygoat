@@ -86,7 +86,7 @@ jobs:
             type=semver,pattern=v{{version}}
             type=sha,prefix=,suffix=,format=short
 
-      - name: Build Docker Image
+      - name: Build and Push Docker Image
         id: build-and-push
         uses: docker/build-push-action@v6
         with:
@@ -117,5 +117,3 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-
-      
